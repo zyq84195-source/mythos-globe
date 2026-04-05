@@ -11,18 +11,18 @@
   <meta property="og:description" content="通过可交互3D地球，探索全球各地区的经典神话传说。">
   <meta property="og:type" content="website">
 
-  <!-- Fonts: Zodiak (display) + Satoshi (body) from Fontshare -->
-  <link href="https://api.fontshare.com/v2/css?f[]=zodiak@400,500,700&f[]=satoshi@300,400,500,700&display=swap" rel="stylesheet">
+  <!-- Fonts: 本地字体文件，无需外网 -->
+  <link href="./fonts/fonts.css" rel="stylesheet">
 
-  <!-- Lucide Icons -->
-  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+  <!-- Lucide Icons: 本地版本 -->
+  <script src="./vendor/lucide.js"></script>
 
-  <!-- Three.js -->
+  <!-- Three.js: 本地版本，无需外网CDN -->
   <script type="importmap">
   {
     "imports": {
-      "three": "https://cdn.jsdelivr.net/npm/three@0.183.0/build/three.module.js",
-      "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.183.0/examples/jsm/"
+      "three": "./vendor/three.module.js",
+      "three/addons/": "./vendor/jsm/"
     }
   }
   </script>
@@ -89,14 +89,14 @@
       <span class="section-label">互动探索</span>
       <h2 class="section-title">指尖触碰，神话浮现</h2>
       <p class="section-desc">
-        自由旋转3D地球，点击散布在各大洲上的神话图标，即可打开对应地区的传奇故事。每一个标记都是一扇通往古老文明的大门。
+        自由旋转3D地球，点击遍布全球的 <strong>55个神话体系</strong> 标记，即可打开对应地区的传奇故事——从希腊、北欧、凯尔特，到约鲁巴、玛雅、印加，再到毛利、阿兹特克与澳洲原住民，覆盖人类文明的每一个角落。
       </p>
       <div class="globe-demo-container">
         <div class="globe-canvas-wrap">
           <canvas id="globe-canvas"></canvas>
           <div class="globe-hint">
             <i data-lucide="mouse-pointer-click" style="width:14px;height:14px;"></i>
-            拖拽旋转 · 点击标记探索
+            🌍 拖拽旋转 · 点击金点探索 · 覆盖55个神话体系
           </div>
         </div>
         <div class="myth-panel" id="myth-panel">
@@ -151,7 +151,7 @@
   <section class="cta-section" id="cta">
     <div class="cta-inner">
       <h2>开始你的<span class="accent">神话之旅</span></h2>
-      <p>免费注册即可探索完整的全球神话数据库，包含数百篇精选故事和语音内容。</p>
+      <p>免费注册即可探索完整的全球神话数据库，目前收录 55 个神话体系、覆盖全球每一大洲，所有故事均支持语音朗读。</p>
       <form class="cta-form" onsubmit="handleSignup(event)">
         <input type="email" class="cta-input" placeholder="输入你的邮箱" required>
         <button type="submit" class="btn btn-primary">免费注册</button>

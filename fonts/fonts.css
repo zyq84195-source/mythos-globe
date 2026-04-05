@@ -1,0 +1,29 @@
+/* Local fonts — no external CDN needed */
+@font-face {
+  font-family: 'Satoshi';
+  src: url('./Satoshi-400.woff2') format('woff2');
+  font-weight: 300 500;
+  font-display: swap;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Satoshi';
+  src: url('./Satoshi-700.woff2') format('woff2');
+  font-weight: 600 900;
+  font-display: swap;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Zodiak';
+  src: url('./Zodiak-400.woff2') format('woff2');
+  font-weight: 400 500;
+  font-display: swap;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Zodiak';
+  src: url('./Zodiak-700.woff2') format('woff2');
+  font-weight: 600 900;
+  font-display: swap;
+  font-style: normal;
+}
