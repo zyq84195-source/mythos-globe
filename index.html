@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>全球神话展示网 — 探索世界各地的传奇故事</title>
+  <meta name="description" content="通过可交互3D地球，探索全球各地区的经典神话传说。自由旋转地球，点击发现每个文明独有的神话故事，支持语音播放。">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="全球神话展示网 — 探索世界各地的传奇故事">
+  <meta property="og:description" content="通过可交互3D地球，探索全球各地区的经典神话传说。">
+  <meta property="og:type" content="website">
+
+  <!-- Fonts: Zodiak (display) + Satoshi (body) from Fontshare -->
+  <link href="https://api.fontshare.com/v2/css?f[]=zodiak@400,500,700&f[]=satoshi@300,400,500,700&display=swap" rel="stylesheet">
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+
+  <!-- Three.js -->
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://cdn.jsdelivr.net/npm/three@0.183.0/build/three.module.js",
+      "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.183.0/examples/jsm/"
+    }
+  }
+  </script>
+
+  <link rel="stylesheet" href="./base.css">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+
+  <!-- ======== HEADER ======== -->
+  <header class="header">
+    <div class="header-inner">
+      <a href="#" class="logo-link">
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" aria-label="全球神话展示网 Logo">
+          <circle cx="16" cy="16" r="14" stroke="currentColor" stroke-width="1.5"/>
+          <ellipse cx="16" cy="16" rx="8" ry="14" stroke="currentColor" stroke-width="1.2"/>
+          <path d="M3 12h26M3 20h26" stroke="currentColor" stroke-width="1" opacity="0.5"/>
+          <circle cx="16" cy="16" r="3" fill="var(--color-primary)" opacity="0.9"/>
+          <path d="M16 13l1.8 2.4L16 19l-1.8-3.6z" fill="var(--color-primary)"/>
+        </svg>
+        <span class="logo-text">MythosGlobe</span>
+      </a>
+      <nav class="header-nav">
+        <a href="#features">功能</a>
+        <a href="#explore">探索</a>
+        <a href="#cta">注册</a>
+        <button class="theme-toggle" data-theme-toggle aria-label="切换主题">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ======== HERO ======== -->
+  <section class="hero">
+    <div class="hero-bg">
+      <div class="hero-stars" id="hero-stars"></div>
+    </div>
+    <div class="hero-content">
+      <div class="hero-badge">
+        <i data-lucide="sparkles" style="width:14px;height:14px;"></i>
+        全新交互体验
+      </div>
+      <h1>指尖之上<br>探索<span class="accent">全球神话</span></h1>
+      <p class="hero-desc">
+        旋转3D地球，发现隐藏在每一片大陆上的古老传说。从希腊奥林匹斯山到中国昆仑山，从北欧阿斯加德到埃及尼罗河畔——世界各地的神话，尽在掌握。
+      </p>
+      <div class="hero-actions">
+        <a href="#cta" class="btn btn-primary">
+          <i data-lucide="rocket" style="width:16px;height:16px;"></i>
+          免费开始探索
+        </a>
+        <a href="#explore" class="btn btn-secondary">
+          <i data-lucide="globe" style="width:16px;height:16px;"></i>
+          查看演示
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======== GLOBE EXPLORE ======== -->
+  <section class="globe-section" id="explore">
+    <div class="globe-section-inner">
+      <span class="section-label">互动探索</span>
+      <h2 class="section-title">指尖触碰，神话浮现</h2>
+      <p class="section-desc">
+        自由旋转3D地球，点击散布在各大洲上的神话图标，即可打开对应地区的传奇故事。每一个标记都是一扇通往古老文明的大门。
+      </p>
+      <div class="globe-demo-container">
+        <div class="globe-canvas-wrap">
+          <canvas id="globe-canvas"></canvas>
+          <div class="globe-hint">
+            <i data-lucide="mouse-pointer-click" style="width:14px;height:14px;"></i>
+            拖拽旋转 · 点击标记探索
+          </div>
+        </div>
+        <div class="myth-panel" id="myth-panel">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======== FEATURES ======== -->
+  <section class="features-section" id="features">
+    <div class="features-inner">
+      <span class="section-label">核心功能</span>
+      <h2 class="section-title">沉浸式神话体验</h2>
+      <p class="section-desc" style="margin-left:auto;margin-right:auto;">
+        我们将全球神话故事融入前沿交互技术，为你打造前所未有的文化探索之旅。
+      </p>
+      <div class="features-grid">
+        <div class="feature-card fade-in">
+          <div class="feature-icon">
+            <i data-lucide="globe-2" style="width:24px;height:24px;"></i>
+          </div>
+          <h3>3D 交互地球</h3>
+          <p>基于 WebGL 技术的高精度地球模型，支持自由拖拽旋转和缩放。每个大洲都标注了代表性的神话文化区域。</p>
+        </div>
+        <div class="feature-card fade-in">
+          <div class="feature-icon">
+            <i data-lucide="map-pin" style="width:24px;height:24px;"></i>
+          </div>
+          <h3>地区神话图标</h3>
+          <p>球体上遍布各地区代表性的神话图标。鼠标悬停可预览地区简介，点击即可展开当地所有神话故事。</p>
+        </div>
+        <div class="feature-card fade-in">
+          <div class="feature-icon">
+            <i data-lucide="book-open" style="width:24px;height:24px;"></i>
+          </div>
+          <h3>详细故事展示</h3>
+          <p>每则神话都包含完整的故事背景、人物关系和文化意义解读，配以精美的插画和排版设计。</p>
+        </div>
+        <div class="feature-card fade-in">
+          <div class="feature-icon">
+            <i data-lucide="volume-2" style="width:24px;height:24px;"></i>
+          </div>
+          <h3>语音播放</h3>
+          <p>所有神话故事均支持语音播放，由专业配音员录制。让你在通勤或休息时也能聆听古老的传说。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======== CTA ======== -->
+  <section class="cta-section" id="cta">
+    <div class="cta-inner">
+      <h2>开始你的<span class="accent">神话之旅</span></h2>
+      <p>免费注册即可探索完整的全球神话数据库，包含数百篇精选故事和语音内容。</p>
+      <form class="cta-form" onsubmit="handleSignup(event)">
+        <input type="email" class="cta-input" placeholder="输入你的邮箱" required>
+        <button type="submit" class="btn btn-primary">免费注册</button>
+      </form>
+      <p class="cta-note">无需信用卡 · 即刻开始 · 永久免费基础版</p>
+    </div>
+  </section>
+
+  <!-- ======== FOOTER ======== -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <span class="footer-text">&copy; 2026 MythosGlobe. All rights reserved.</span>
+      <a href="https://www.perplexity.ai/computer" target="_blank" rel="noopener noreferrer" class="footer-text">
+        Created with Perplexity Computer
+      </a>
+    </div>
+  </footer>
+
+  <!-- ======== STORY MODAL ======== -->
+  <div class="modal-overlay" id="story-modal">
+    <div class="modal">
+      <div class="modal-header">
+        <div class="modal-title-wrap">
+          <div class="modal-region" id="modal-region"></div>
+          <h3 class="modal-myth-title" id="modal-title"></h3>
+        </div>
+        <button class="modal-close" onclick="closeModal()" aria-label="关闭">
+          <i data-lucide="x" style="width:20px;height:20px;"></i>
+        </button>
+      </div>
+      <div class="modal-body" id="modal-body"></div>
+      <div class="audio-player" id="audio-player">
+        <button class="audio-btn" id="audio-btn" onclick="toggleAudio()" aria-label="播放语音">
+          <i data-lucide="play" style="width:20px;height:20px;" id="audio-icon-play"></i>
+        </button>
+        <div class="audio-info">
+          <div class="audio-label">语音朗读</div>
+          <div class="audio-title" id="audio-story-title"></div>
+          <div class="audio-progress">
+            <div class="audio-progress-bar" id="audio-progress-bar"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="./app.js"></script>
+  <script>
+    // Theme toggle
+    (function(){
+      const t=document.querySelector('[data-theme-toggle]'),r=document.documentElement;
+      let d=matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light';
+      r.setAttribute('data-theme',d);
+      t&&t.addEventListener('click',()=>{
+        d=d==='dark'?'light':'dark';
+        r.setAttribute('data-theme',d);
+        t.setAttribute('aria-label','切换到'+(d==='dark'?'浅色':'深色')+'模式');
+        t.innerHTML=d==='dark'
+          ?'<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>'
+          :'<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
+      });
+    })();
+
+    // Generate stars
+    (function(){
+      const container = document.getElementById('hero-stars');
+      for(let i=0;i<80;i++){
+        const star = document.createElement('div');
+        star.className='star';
+        star.style.left = Math.random()*100+'%';
+        star.style.top = Math.random()*100+'%';
+        star.style.animationDelay = Math.random()*3+'s';
+        star.style.width = star.style.height = (Math.random()*2+1)+'px';
+        container.appendChild(star);
+      }
+    })();
+  </script>
+  <script>
+    lucide.createIcons();
+  </script>
+</body>
+</html>
