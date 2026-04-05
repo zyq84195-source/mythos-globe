@@ -171,6 +171,9 @@
   </footer>
 
   <!-- ======== STORY MODAL ======== -->
+  <!-- Country Tooltip -->
+  <div id="country-tooltip"></div>
+
   <div class="modal-overlay" id="story-modal">
     <div class="modal">
       <div class="modal-header">
@@ -182,7 +185,15 @@
           <i data-lucide="x" style="width:20px;height:20px;"></i>
         </button>
       </div>
-      <div class="modal-body" id="modal-body"></div>
+      <!-- Hero image -->
+      <div class="modal-hero" id="modal-hero-wrap">
+        <img id="modal-hero-image" src="" alt="" class="modal-hero-img" loading="lazy">
+        <div class="modal-image-caption" id="modal-image-caption"></div>
+      </div>
+      <!-- Chapters -->
+      <div class="modal-body" id="modal-body">
+        <div id="modal-chapters"></div>
+      </div>
       <div class="audio-player" id="audio-player">
         <button class="audio-btn" id="audio-btn" onclick="toggleAudio()" aria-label="播放语音">
           <i data-lucide="play" style="width:20px;height:20px;" id="audio-icon-play"></i>

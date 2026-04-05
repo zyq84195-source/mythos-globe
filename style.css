@@ -862,3 +862,116 @@
     text-align: center;
   }
 }
+
+/* ========================
+   COUNTRY TOOLTIP
+======================== */
+#country-tooltip {
+  position: fixed;
+  z-index: 9999;
+  pointer-events: none;
+  background: rgba(10, 11, 16, 0.92);
+  border: 1px solid rgba(212, 165, 74, 0.5);
+  border-radius: 8px;
+  padding: 8px 14px;
+  font-family: var(--font-body);
+  font-size: 13px;
+  color: #f0ece4;
+  backdrop-filter: blur(8px);
+  white-space: nowrap;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.5), 0 0 0 1px rgba(212,165,74,0.15);
+  transform: translate(12px, -50%);
+  opacity: 0;
+  transition: opacity 0.15s ease;
+}
+#country-tooltip.visible {
+  opacity: 1;
+}
+#country-tooltip .tt-country {
+  font-weight: 600;
+  color: #d4a54a;
+  font-size: 14px;
+}
+#country-tooltip .tt-myth {
+  color: rgba(240,236,228,0.7);
+  font-size: 12px;
+  margin-top: 2px;
+}
+[data-theme="light"] #country-tooltip {
+  background: rgba(255,252,245,0.95);
+  color: #1a1a1a;
+  border-color: rgba(166,124,46,0.4);
+}
+[data-theme="light"] #country-tooltip .tt-country {
+  color: #a67c2e;
+}
+
+/* ========================
+   MODAL HERO IMAGE
+======================== */
+.modal-hero {
+  position: relative;
+  width: 100%;
+  max-height: 360px;
+  overflow: hidden;
+  border-radius: 12px;
+  margin-bottom: 28px;
+  background: #0a0b10;
+}
+.modal-hero-img {
+  width: 100%;
+  max-height: 360px;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+  border-radius: 12px;
+}
+.modal-image-caption {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  padding: 24px 16px 10px;
+  font-size: 11px;
+  line-height: 1.5;
+  color: rgba(255,255,255,0.7);
+  background: linear-gradient(transparent, rgba(0,0,0,0.75));
+  border-radius: 0 0 12px 12px;
+}
+.modal-hero.hidden {
+  display: none;
+}
+
+/* ========================
+   STORY CHAPTERS
+======================== */
+.story-chapter {
+  margin-bottom: 28px;
+  padding-bottom: 28px;
+  border-bottom: 1px solid rgba(212,165,74,0.12);
+}
+.story-chapter:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+}
+.chapter-title {
+  font-family: var(--font-display);
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--color-accent);
+  margin-bottom: 12px;
+  line-height: 1.4;
+}
+.chapter-content {
+  font-size: 15px;
+  line-height: 1.85;
+  color: var(--color-text);
+  text-align: justify;
+}
+[data-theme="light"] .chapter-title {
+  color: #a67c2e;
+}
+
+/* Larger modal for rich content */
+.modal {
+  max-width: 760px !important;
+  max-height: 88vh !important;
+}
